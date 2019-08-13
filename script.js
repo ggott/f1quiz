@@ -203,7 +203,7 @@ const questions = [
     ]
   },
   {
-    question: 'gp/Circut_Paul_Ricard_2018_layout_map.png',
+    question: 'gp/Circut_Paul_Ricard_2018_layout_map.svg',
     answers: [
       { text: 'Kinda', correct: false },
       { text: 'French GP', correct: true },
