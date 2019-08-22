@@ -38,7 +38,9 @@ body.wrong {
 
 .container {
   width: 350px;
-  max-width: 80%;
+  max-width: 90%;
+  /* height: 400px;
+  max-height: 90%; */
   background-color: white;
   border-radius: 5px;
   padding: 10px;
