@@ -94,4 +94,5 @@ body.wrong {
 .track-img{
   width: 100%;
   height: auto;
+  pointer-events: none;
 }
