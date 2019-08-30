@@ -5,7 +5,7 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const scoreContainer = document.getElementById('score-container')
 
-let suffledQuestions, currentQuestionIndex
+let shuffledQuestions, currentQuestionIndex
 var scoreValue
 
 startButton.addEventListener('click', startGame)
@@ -24,21 +24,21 @@ function startGame(){
         do {
           ans = answers[Math.floor(Math.random()*answers.length)]
         }
-        while(duplicated(question, ans))
+        while(isDuplicated(question, ans))
         answer.text = ans
       }
     })
-    console.log(shuffle(question.answers))
+    console.log(shuffleArray(question.answers))
   })
-  suffledQuestions = shuffle(questions)
-  console.log(suffledQuestions)
+  shuffledQuestions = shuffleArray(questions)
+  // console.log(shuffledQuestions)
   currentQuestionIndex = 0
   scoreValue = 0
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
 }
 
-function duplicated(question, ans)  {
+function isDuplicated(question, ans)  {
   var exist = false
   question.answers.forEach(answer => {
     if (answer.text === ans){
@@ -48,7 +48,7 @@ function duplicated(question, ans)  {
   return exist
 }
 
-function shuffle(a) {
+function shuffleArray(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
         j = Math.floor(Math.random() * (i + 1));
@@ -61,7 +61,7 @@ function shuffle(a) {
 
 function setNextQuestion() {
   resetState()
-  showQuestion(suffledQuestions[currentQuestionIndex])
+  showQuestion(shuffledQuestions[currentQuestionIndex])
   // console.log(score)
 }
 
@@ -98,7 +98,7 @@ function selectAnswer(e) {
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
-  if (suffledQuestions.length > currentQuestionIndex + 1){
+  if (shuffledQuestions.length > currentQuestionIndex + 1){
     nextButton.classList.remove('hide')
   }else {
     startButton.innerText = 'Restart'
@@ -123,6 +123,7 @@ function clearStatusClass (element) {
   element.classList.remove('correct')
   element.classList.remove('wrong')
 }
+
 const answers =[
   'Australian GP',
   'Bahrain GP',
